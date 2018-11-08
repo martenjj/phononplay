@@ -1,6 +1,6 @@
 #########################################################################
 #  Project:		Phonon Command Line Player			#
-#  Edit:		18-Oct-18					#
+#  Edit:		08-Nov-18					#
 #########################################################################
 
 project(phononplay)
@@ -36,26 +36,31 @@ remove_definitions("-DQT_NO_SIGNALS_SLOTS_KEYWORDS")
 
 #########################################################################
 #									#
-#  Building the target							#
+#  Building the target - phononplay					#
 #									#
 #########################################################################
 
-set(phononplay_SRCS
-  phononplay.cpp
-)
+set(phononplay_SRCS phononplay.cpp)
 
 add_definitions("-DVERSION=\\\"${VERSION}\\\"")
-include_directories(${PHONON_INCLUDES})
 
 add_executable(phononplay ${phononplay_SRCS})
-target_link_libraries(phononplay
-  Qt5::Core
-  KF5::I18n
-  KF5::CoreAddons
-  KF5::Crash
-  Phonon::phonon4qt5)
+target_include_directories(phononplay PRIVATE ${PHONON_INCLUDES})
+target_include_directories(phononplay PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/..)
+target_link_libraries(phononplay Qt5::Core KF5::I18n KF5::CoreAddons KF5::Crash Phonon::phonon4qt5)
 
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
+#########################################################################
+#									#
+#  Building the target - vlcplay					#
+#									#
+#########################################################################
+
+set(vlcplay_SRCS vlcplay.c)
+
+add_executable(vlcplay ${vlcplay_SRCS})
+target_include_directories(vlcplay PRIVATE "/usr/include/vlc")
+target_compile_options(vlcplay PRIVATE "--std=c99")
+target_link_libraries(vlcplay vlc)
 
 #########################################################################
 #									#
@@ -64,3 +69,4 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 #########################################################################
 
 install(TARGETS phononplay ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS vlcplay ${INSTALL_TARGETS_DEFAULT_ARGS})
