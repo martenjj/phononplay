@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////
 //									//
 //  Project:	Phonon Command Line Player				//
-//  Edit:	18-Oct-18						//
+//  Edit:	11-Nov-18						//
 //									//
 //////////////////////////////////////////////////////////////////////////
 //									//
@@ -231,17 +231,21 @@ int main(int argc, char *argv[])
                          {
                              ++i;
                              if (i>=args.count())	// end of command arguments
-                             {
-                                 errmsg(i18nc("@info:shell", "Finished"), "success");
-                                 QCoreApplication::exit(EXIT_SUCCESS);
-                                 return;		// from lambda, then app.exec()
-                             }
+                                 return;		// from lambda
 
                              const QUrl u = parseFileArgument(args[i]);
                              if (!u.isValid()) continue;
                              media->enqueue(u);
                              break;
                          }
+                     });
+
+    QObject::connect(media, &Phonon::MediaObject::finished,
+                     [&]()
+                     {
+                         errmsg(i18nc("@info:shell", "Finished"), "success");
+                         QCoreApplication::exit(EXIT_SUCCESS);
+                         return;		// from lambda, then from app.exec()
                      });
 
     const QUrl u = parseFileArgument(args[0]);		// first media argument
