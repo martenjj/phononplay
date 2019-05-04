@@ -1,12 +1,12 @@
 //////////////////////////////////////////////////////////////////////////
 //									//
 //  Project:	Phonon Command Line Player				//
-//  Edit:	11-Nov-18						//
+//  Edit:	04-May-19						//
 //									//
 //////////////////////////////////////////////////////////////////////////
 //									//
-//  Copyright (c) 2018 Jonathan Marten <jjm@keelhaul.me.uk>		//
-//  Home and download page:  http://www.keelhaul.me.uk/TBD/		//
+//  Copyright (c) 2018-2019 Jonathan Marten <jjm@keelhaul.me.uk>	//
+//  Home page:  <http://github.com/martenjj/phononplay>  		//
 //									//
 //  This program is free software; you can redistribute it and/or	//
 //  modify it under the terms of the GNU General Public License as	//
@@ -108,15 +108,15 @@ static QUrl parseFileArgument(const QString &arg)
  
 int main(int argc, char *argv[])
 {
-    KAboutData aboutData("phononplay",			// componentName
-                         i18n("Phonon Player"),		// displayName
-                         VERSION,			// version
+    KAboutData aboutData("phononplay",					// componentName
+                         i18n("Phonon Player"),				// displayName
+                         VERSION,					// version
                          i18n("Command line Phonon audio player"),
                          KAboutLicense::GPL_V3,
                          i18n("Copyright (c) 2018 Jonathan Marten"),
-                         "",				// otherText
-                         "http://www.keelhaul.me.uk",	// homePageAddress
-                        "jjm@keelhaul.me.uk");		// bugsEmailAddress
+                         "",						// otherText
+                         "http://github.com/martenjj/phononplay",	// homePageAddress
+                        "jjm@keelhaul.me.uk");				// bugsEmailAddress
     aboutData.addAuthor(i18n("Jonathan Marten"),
                         "",
                         "jjm@keelhaul.me.uk",

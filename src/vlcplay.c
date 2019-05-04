@@ -1,12 +1,12 @@
 /************************************************************************/
 /*									*/
 /*  Project:	VLC Command Line Player					*/
-/*  Edit:	08-Nov-18						*/
+/*  Edit:	04-May-19						*/
 /*									*/
 /************************************************************************/
 /*									*/
-/*  Copyright (c) 2018 Jonathan Marten <jjm@keelhaul.me.uk>		*/
-/*  Home and download page:  http://www.keelhaul.me.uk/TBD/		*/
+/*  Copyright (c) 2018-2019 Jonathan Marten <jjm@keelhaul.me.uk>	*/
+/*  Home page:  <http://github.com/martenjj/phononplay>  		*/
 /*									*/
 /*  This program is free software; you can redistribute it and/or	*/
 /*  modify it under the terms of the GNU General Public License as	*/
